@@ -1,0 +1,39 @@
+{
+  "name": "michael_vandi",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "emailjs-com": "^2.4.0",
+    "firebase": "^7.1.0",
+    "mdbreact": "^4.21.1",
+    "react": "^16.10.2",
+    "react-art": "^16.5.1",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-dom": "^16.10.2",
+    "react-icons": "^3.7.0",
+    "react-native": "0.56.0",
+    "react-native-web": "^0.9.0",
+    "react-navigation": "^2.17.0",
+    "react-responsive-carousel": "^3.1.50",
+    "react-router-dom": "^4.3.1",
+    "react-router-modal": "^1.4.2",
+    "react-scroll": "^1.7.14"
+  },
+  "devDependencies": {
+    "babel-jest": "^23.4.0",
+    "babel-preset-react-native": "^5",
+    "jest": "^23.4.1",
+    "react-scripts": "1.1.5",
+    "react-test-renderer": "^16.3.1"
+  },
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "start-ios": "react-native run-ios",
+    "start-web": "react-scripts start",
+    "build": "react-scripts build",
+    "test-web": "react-scripts test --env=jsdom",
+    "eject-web": "react-scripts eject"
+  }
+}
