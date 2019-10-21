@@ -61,3 +61,7 @@ chrome-user-data
 .eslintrc.js
 .watchmanconfig
 .expo
+
+# inoring
+yarn.lock
+src/Firebase.js
