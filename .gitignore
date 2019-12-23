@@ -62,6 +62,8 @@ chrome-user-data
 .watchmanconfig
 .expo
 
-# inoring
+# ignoring
 yarn.lock
 src/Firebase.js
+src/Global.js
+firebase
