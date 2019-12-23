@@ -168,15 +168,15 @@ const styles = StyleSheet.create({
     organization_text:{
         fontWeight: 'bold',
         marginVertical: 2,
-        fontSize: 15,
+        fontSize: 16,
     },
     role_text:{
         fontWeight: 'bold',
         marginVertical: 2,
-        fontSize: 16,
+        fontSize: 17,
     },
     normal_text:{
-        fontSize: 15,
+        fontSize: 16,
         marginBottom: 10,
     },
     logos:{

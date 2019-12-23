@@ -67,9 +67,6 @@ class SideNav extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions.bind(this));
   }
-  onProjectsPress=()=>{
-    
-  }
 
   render (){
     const TopNav = () => {
@@ -85,31 +82,38 @@ class SideNav extends React.Component {
           </View>
           <View>
             <div className="navbar" style={{flexDirection: 'column'}}>
-              <Link activeClass="active" to="home" spy={true} smooth={true} offset={-10} duration={500}>
+              <Link activeClass="active" to="home" spy={true} smooth={true} offset={-60} duration={500}>
                 <TouchableOpacity style = {styles.button}>
                   <Text style = {styles.text}> Home</Text>
                 </TouchableOpacity>
               </Link>
 
-              <Link activeClass="active" to="about" spy={true} smooth={true} offset={-10} duration={500}>
+              <Link activeClass="active" to="about" spy={true} smooth={true} offset={-60} duration={500}>
                 <TouchableOpacity style = {styles.button}>
                   <Text style = {styles.text}> About</Text>
                 </TouchableOpacity>
               </Link>
 
-              <Link activeClass="active" to="projects" spy={true} smooth={true} offset={-10} duration={500}>
-                <TouchableOpacity onPress={this.onProjectsPress} style = {styles.button}>
+
+              <Link activeClass="active" to="skills" spy={true} smooth={true} offset={-60} duration={500}>
+                <TouchableOpacity style = {styles.button}>
+                  <Text style = {styles.text}> Skills</Text>
+                </TouchableOpacity>
+              </Link>
+
+              <Link activeClass="active" to="projects" spy={true} smooth={true} offset={-60} duration={500}>
+                <TouchableOpacity style = {styles.button}>
                   <Text style = {styles.text}> Projects</Text>
                 </TouchableOpacity>
               </Link>
 
-              <Link activeClass="active" to="resume" spy={true} smooth={true} offset={-10} duration={500}>
+              <Link activeClass="active" to="resume" spy={true} smooth={true} offset={-60} duration={500}>
                 <TouchableOpacity style = {styles.button}>
                   <Text style = {styles.text}> Resume</Text>
                 </TouchableOpacity>
               </Link>
 
-              <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-10} duration={500}>
+              <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-60} duration={500}>
                 <TouchableOpacity style = {styles.button}>
                   <Text style = {styles.text}> Contact</Text>
                 </TouchableOpacity>
@@ -147,7 +151,7 @@ const styles = StyleSheet.create({
     // shadowRadius: 5,
     // shadowOpacity: 0.7,
     marginBottom: 10,
-    marginTop: 15,
+    marginTop: 70,
     padding: 10,
     borderRadius: 10,
     position: 'fixed',
@@ -162,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   text:{
-    fontSize: 14,
+    fontSize: 15,
   },
   profile_img:{
     borderRadius: "50%",
@@ -171,11 +175,11 @@ const styles = StyleSheet.create({
   },
   nameText:{
     fontWeight:"bold",
-    fontSize: 18,
+    fontSize: 19,
     fontFamily:'Monospace'
   },
   posText:{
-    fontSize: 15,
+    fontSize: 16,
   },
   copyrightText:{
     width: "100%",

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaEnvelope, FaGithub, FaPhone, FaLinkedin, FaInstagram} from 'react-icons/fa';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from 'mdbreact';
 import * as emailjs from 'emailjs-com'
+import Global from './Global';
 
 class ContactMe extends React.Component{
     constructor(props){
@@ -36,8 +37,9 @@ class ContactMe extends React.Component{
             message_html: this.state.message,
             reply_to: this.state.from_email,
        }
+       var emailId = Global.getEmailJsId();
        var that = this;
-       emailjs.send('zoho', 'template_83TGLJXz', templateParams, 'user_SsazCpFD70PMO2FuhPDOK')
+       emailjs.send('zoho', 'template_83TGLJXz', templateParams, emailId)
         .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
         that.setState({success_msg: 'Message sent successfully!!'})
@@ -102,7 +104,7 @@ class ContactMe extends React.Component{
                                     mvandi@mvandi.com</Text>
 
                                     <Text style={styles.info_text}> 
-                                    <FaGithub style={{marginRight: 5}}/> Github: <a href ="https://github.com/MichaelVandi/">
+                                    <FaGithub style={{marginRight: 5}}/> Github: <a href ="https://github.com/MichaelVandi/" target="_blank">
                                     MichaelVandi</a></Text>
 
                                     <Text style={styles.info_text}> 
@@ -110,11 +112,11 @@ class ContactMe extends React.Component{
                                     +1(443) 582 9119</a></Text>
                                     
                                     <Text style={styles.info_text}> 
-                                    <FaLinkedin style={{marginRight: 5}}/>LinkedIn: <a href ="https://www.linkedin.com/in/michael-vandi/">
+                                    <FaLinkedin style={{marginRight: 5}}/>LinkedIn: <a href ="https://www.linkedin.com/in/michael-vandi/" target="_blank">
                                     Michael Vandi</a></Text>
 
                                     <Text style={styles.info_text}> 
-                                    <FaInstagram style={{marginRight: 5}}/>Instagram: <a href ="https://www.instagram.com/mike_ehl_/">
+                                    <FaInstagram style={{marginRight: 5}}/>Instagram: <a href ="https://www.instagram.com/mike_ehl_/" target="_blank">
                                     mike_ehl_</a></Text>
 
                                 </View>
@@ -264,7 +266,7 @@ const styles= StyleSheet.create({
         marginVertical: 10, 
     },
     info_text:{
-        fontSize: 16,
+        fontSize: 17,
         marginVertical: 5,
     }
 })

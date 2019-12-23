@@ -36,13 +36,13 @@ class HomeScreen extends React.Component {
     const HomeComponent = () => {
       return (
         <View style = {styles.container}>
-        <View>
+        <View style={{width: '98%'}}>
           <Carousel style={styles.carousel} autoPlay={true} showThumbs ={false} infiniteLoop={true} 
             interval={5000} stopOnHover={false}>
-            <div>
+            {/* <div>
               <img style={{width: "100%", height: "auto", borderRadius: 10,}} 
                 alt="Workspace" src={this.state.carousel_img1}/>
-            </div>
+            </div> */}
             <div>
               <img style={{width: "100%", height: "auto", borderRadius: 10,}} 
                 alt="Workspace" src={this.state.carousel_img2}/>
@@ -55,11 +55,13 @@ class HomeScreen extends React.Component {
 
           <View style={styles.button_container}>
             <TouchableOpacity style={styles.touchable}>
-              <a style={{color:'black', fontSize: 16, fontFamily: 'Monospace', fontWeight:'bold',}}>
+              <a href="https://firebasestorage.googleapis.com/v0/b/portfolio-fb3f6.appspot.com/o/Michael_Vandi_Resume.pdf?alt=media&token=8799292d-d259-4796-8db2-2f1d78c08945"
+              style={{color:'black', fontSize: 16, fontFamily: 'Monospace', fontWeight:'bold',}}
+              target="_blank">
               Download Resume</a>
             </TouchableOpacity>
 
-            <Link activeClass="active" to="projects" spy={true} smooth={true} offset={-10} duration={500}>
+            <Link activeClass="active" to="projects" spy={true} smooth={true} offset={-60} duration={500}>
               <TouchableOpacity style={styles.touchable}>
                 <Text style={styles.button_text}>Projects</Text>
               </TouchableOpacity>
@@ -86,11 +88,11 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 5,
     display: 'flex',
     flexDirection: 'column',
     width: "100%",
     height: home_height,
+    marginTop: 62,
     
   },
   carousel: {
@@ -101,7 +103,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     width: '55%',
-    fontSize: 28,
+    fontSize: 29,
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -135,7 +137,7 @@ const styles = StyleSheet.create({
   },
   button_text:{
     color:'black',
-    fontSize: 16,
+    fontSize: 17,
     fontFamily: 'Monospace',
     fontWeight:'bold',
   }

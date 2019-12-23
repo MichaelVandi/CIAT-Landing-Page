@@ -18,33 +18,40 @@ class AboutMe extends React.Component{
                         Who Am I<mark style={{backgroundColor: 'black', color: 'white'}}>?</mark>
                     </Text>
                     <Text style ={styles.normalText}>
-                        Hi! I'm Michael. I am a Computer Science Student at the University of Baltimore and I also 
-                        study part time at the Harvard Extension School. I've worked on a handful of personal projects
-                        which I often make open source and I've also had a few cool internship activities.
+                    Hi! I’m Michael. I am an Applied Computer Science student at the University of Baltimore 
+                    and I also study part-time at the Harvard Extension School. 
                     </Text>
 
                     <Text style= {styles.normalText}>
-                        <strong>How did I get into software stuff ?</strong> It's unbelievable every time I think of my journey
-                        into Computer Science and my academic and career growth over the last few years. 
-                        I am originally from Freetown, Sierra Leone— a developing
-                        country in Sub Saharan (West) Africa. Growing up in Freetown gave me the opportunity to
-                        experience a variety of ethnic cultures. However, I always had some exceptional 
-                        inner drive for tech. When I was 6 years old, My Aunt gave me a toy laptop as a present.
-                        It was an awkward looking laptop with black and white display programmed with a variety
-                        of cartoon games. I would spent hours trying to figure out the instructions 
-                        on the laptop and how to use the computer correctly. Some days, I wondered how the games
-                        were built and I wanted to build my own games too. To do this, I would randomly press
-                        keys on the keyboard pretending to write code. After a while of doing this, the toy
-                        laptop crashed. This experience triggered an interest in me to become a computer
-                        scientist. I grew the passion to build my own programs someday just like the ones on the
-                        toy laptop. 
+                    <strong>How did I get into Tech? </strong>I am from Freetown, Sierra Leone in Sub Saharan Africa. It is unconventional for a 
+                    little kid growing up in West Africa to be tech-savvy. However, I defied the odds by 
+                    showing exceptional interest in technology. As a kid, we used to go weeks without 
+                    electricity, so I would use scraps to make LED lights to study and impress my neighbors 
+                    and family. On my sixth birthday, my aunt gave me a toy laptop as a present —the best gift 
+                    I ever had! It was an awkward-looking laptop with black and white display programmed 
+                    with a variety of games. I would spend hours trying to figure out how to use the laptop. 
+                    Some days, I wondered how the games on it were made and I wanted to build my own games too. 
+                    To do this, I would randomly press keys on the keyboard pretending to write code as I have 
+                    seen in movies. After a while of doing this, the laptop crashed. I cried all night. 
+                    This experience triggered my determination to become a computer scientist and build my own 
+                    games someday just like the ones I had on the toy laptop. I have come a really long way 
+                    since then. Nine years later, at age 15, in my final year of high school, I learned how to 
+                    code, built my first android app and 2D game and I fell in love with coding ever since.
+
                     </Text>
                     <Text style= {styles.normalText}>
-                        In my final year of high school, I built my first android app. Not long after, 
-                        I received an opportunity to study in the United States. Since my relocation
-                        to the states my computer science career has been beautifully forming together
-                        one piece at a time. Things I once considered dreams were now my daily life, ranging
-                        from getting scholarships, working and networking with amazing teams etc.
+                    Professionally, I have had a few cool internships, built apps and websites for small 
+                    businesses and worked on a handful of personal projects while still maintaining a perfect 
+                    GPA in school. My transition from Sierra Leone to the United States steered a desire in 
+                    me to contribute positively to technological changes globally and extend the benefits of 
+                    tech to underprivileged communities and I look forward to more opportunities that would 
+                    enable me to make real impacts in society.
+                    </Text>
+
+                    <Text style= {styles.normalText}>
+                    In my leisure time, I write code, listen to audiobooks and music, play the guitar, 
+                    research on fun stuff and I think I lift weights too (:-)  I owe all this progress to my 
+                    Mum, who with little finances raised me to be the man I am today. 
                     </Text>
                 </View>
             )
@@ -68,7 +75,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     normalText:{
-        fontSize: 15,
+        fontSize: 16,
         marginBottom: 10,
     }
 })

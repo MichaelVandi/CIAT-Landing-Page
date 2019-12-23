@@ -2,7 +2,6 @@ import React from "react"
 import {View, Text, Image, StyleSheet, TouchableOpacity, ListView, Modal} from "react-native";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import firebase from './Firebase';
@@ -32,6 +31,38 @@ class Projects extends React.Component{
             
         })
     }
+    // Function to add bottom links like source code, view live if they are available
+    bottomLink1 =(project)=>{
+        if(project.link1){
+            return(
+                <TouchableOpacity style={styles.touchable}>
+                    <a target="_blank" href={project.demo_video} 
+                    style={{color:'black', fontSize: 16, fontFamily: 'Monospace'}}>{project.link1}</a>
+                </TouchableOpacity>
+            )
+        }
+        
+    }
+    bottomLink2 =(project)=>{
+        if(project.link2){
+            return(
+                <TouchableOpacity style={styles.touchable}>
+                    <a style={{color:'black', fontSize: 16, fontFamily: 'Monospace'}}
+                    href={project.link2_href} target="_blank">{project.link2}</a>
+                </TouchableOpacity>
+            )
+        }
+    }
+    bottomLink3 =(project)=>{
+        if(project.link3){
+            return(
+                <TouchableOpacity style={styles.touchable}>
+                    <a style={{color:'black', fontSize: 16, fontFamily: 'Monospace'}}
+                    href={project.link3_href} target="_blank">{project.link3}</a>
+                </TouchableOpacity>
+            )
+        } 
+    }
     project =(project)=>{
         return(
             <View style={styles.proj_wrapper}>
@@ -57,7 +88,7 @@ class Projects extends React.Component{
                     <View style={styles.images_view}>
                         <Text style={{fontSize: 17, fontWeight: "bold",}}>Screenshots</Text>
                         <Carousel 
-                        onClickItem={()=>{this.largeProjectImgCarousel(project.image1, 
+                        onClickItem={()=>{this.projectCallBack(project.image1, 
                         project.image2, project.image3)}}
                         autoPlay={true} dynamicHeight={true} stopOnHover={true} infiniteLoop={true}>
                             
@@ -73,7 +104,9 @@ class Projects extends React.Component{
                             </div>
 
                         </Carousel>
-                        <Text style={{textAlign: 'center', fontSize: 12}}>Click current slide to expand</Text> 
+                        <Text 
+                        className="d-none d-md-block"
+                        style={{textAlign: 'center', fontSize: 12}}>Click current slide to expand</Text> 
                     </View>
                     </Col>
                 </Row>
@@ -81,72 +114,20 @@ class Projects extends React.Component{
                 </View>
                 {/* View for action buttons */}
                 <View style={styles.action_buttons_view}>
-                    <TouchableOpacity style={styles.touchable}>
-                        <Text style={styles.button_text}>View Demo</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.touchable}>
-                        <Text style={styles.button_text}>Source Code</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.touchable}>
-                        <Text style={styles.button_text}>View Live</Text>
-                    </TouchableOpacity>
+                {this.bottomLink1(project)}
+                {this.bottomLink2(project)}
+                {this.bottomLink3(project)}
                 </View>
 
             </View>
         )
     }
-    largeProjectImgCarousel=(img1, img2, img3)=>{
-        // If no modal is visible, show this modal
-        if(this.state.modal_visible != true){
-            this.setState({
-                img_lg1: img1,
-                img_lg2: img2,
-                img_lg_3: img3,
-                large_carousel_visible: true,
-                modal_visible: true,
-            })
-        }
-        else{
-            return(null);
-        }
+
+    projectCallBack =(image1, image2, image3)=>{
+        this.props.imagesFromProject(image1, image2, image3);
     }
     
     render(){
-        const LargeProjectImgCarousel=()=>{
-            // If no modal is visible, show this modal
-            if(this.state.large_carousel_visible == true){
-                //Display modal carousel with parsed images
-                return(
-                    
-                    <View style={styles.large_img_carousel}>
-                        <Carousel>
-                            <div>
-                                <img src = {this.state.img_lg1}/>
-                            </div>
-
-                            <div>
-                                <img src = {this.state.img_lg2}/>
-                            </div>
-                            <div>
-                                <img src = {this.state.img_lg3}/>
-                            </div>
-                        </Carousel>
-
-                        <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', margin: 20}}>
-                        <Button onClick={()=>{this.setState({large_carousel_visible: false,
-                            modal_visible: false,})}} 
-                            style={{alignSelf: 'flex-end'}} variant="danger">Close</Button>
-                        </View>
-
-                    </View>
-                    
-                )
-            }
-            else{
-                return(null);
-            }
-        }
-        
         return (
             <View style={styles.wrapper}>
                 <Text style={styles.heading_text}>
@@ -157,7 +138,6 @@ class Projects extends React.Component{
                     renderRow = {this.project}
                     enableEmptySections={true}
                 />
-                <LargeProjectImgCarousel/>
             </View>
         )
     }
@@ -175,6 +155,7 @@ const styles = StyleSheet.create({
         marginVertical: 15,
         borderBottomColor: '#E1E1E1',
         borderBottomWidth: 10,
+        paddingHorizontal: 5,
     },
     title_image_view:{
         display: 'flex',
@@ -207,7 +188,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     descriptionText:{
-        fontSize: 15,
+        fontSize: 16,
         marginVertical: 10,
         
     },
@@ -233,7 +214,7 @@ const styles = StyleSheet.create({
       },
       button_text:{
         color:'black',
-        fontSize: 16,
+        fontSize: 17,
         fontFamily: 'Monospace'
       },
       images_view:{
@@ -254,9 +235,10 @@ const styles = StyleSheet.create({
         width: "90%",
         height: 'auto',
         position: 'absolute',
-        zIndex: 12,
+        zIndex: 8,
         left: 0,
         right: 0,
+        top: 0,
         marginLeft: 'auto',
         marginRight: 'auto',
         backgroundColor: 'white',
