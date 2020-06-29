@@ -71,7 +71,7 @@ class App extends Component {
               {/* For image 3 */}
               <Col md="4" style={{paddingVertical: 10}}>
                 <TouchableOpacity style={styles.sourceCodeButton}>
-                    <a href=""
+                    <a href="https://github.com/MichaelVandi/CIAT"
                     style={{color:'#79797C', fontSize: 20, fontWeight:'bold', textAlign: 'center'}}
                     target="_blank">
                     Source Code</a>
