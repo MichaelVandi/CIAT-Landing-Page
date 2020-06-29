@@ -1,23 +1,16 @@
 // App.js - WEB
 import React, { Component} from "react";
-import { View, StyleSheet, Dimensions, TouchableOpacity, Text } from "react-native";
-import {FaBars} from 'react-icons/fa';
-import HomeScreen from "./HomeScreen";
-import SideNav from "./SideNav";
-import AboutMe from "./AboutMe";
-import Projects from "./Projects";
-import Resume from './Resume';
-import ContactMe from './ContactMe';
+import { View, StyleSheet, Dimensions, 
+  TouchableOpacity, Text, ImageBackground, Image } from "react-native";
+import {FaBars, FaArrowRight} from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import SideNavMobile from './SideNavMobile';
-import Skills from './Skills';
-import './App.css';
-import ExpandedProject from './ExpandedProject';
+
 
 var device_width = Dimensions.get('window').width;
+var device_height = Dimensions.get('window').height;
 var header_text_size = 26;
 
 class App extends Component {
@@ -36,167 +29,146 @@ class App extends Component {
     }
     
   }
-    /**
-   * Calculate & Update state of new dimensions
-   */
-  updateDimensions() {
-    if(window.innerWidth <= 768) {
-      this.setState({
-        showSideNav: false,
-        showHamburgerMenu: true,
-      })
-    } else {
-      this.setState({
-        showSideNav: true,
-        showHamburgerMenu: false,
-        showMobileNav: false,
-      })
-    }
-  }
 
-  /**
-   * Add event listener
-   */
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
-  }
 
-  /**
-   * Remove event listener
-   */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
-  }
-
-  componentWillMount(){
-    if(device_width < 768){
-      this.setState({
-        showSideNav: false,
-        showHamburgerMenu: true,
-        
-      })
-      header_text_size = 23;
-    }
-    else{
-      this.setState({
-        showSideNav: true,
-        showHamburgerMenu: false
-      })
-    }
-  }
-  onHamburgerClick =()=>{
-    this.setState({
-      showMobileNav: !this.state.showMobileNav
-    })
-  }
-
-  projectCallback=(image1, image2, image3)=>{
-    this.setState({
-      img_lg1: image1,
-      img_lg2: image2,
-      img_lg3: image3,
-      showLargeProject: true,
-    })
-  }
 
   render() {
-    const ShowSideNav =()=>{
-      if(this.state.showSideNav == true){
-        return(
-          <SideNav/>
-        )
-      }
-      else{
-        return (null);
-      }
-    }
-    const ShowHamburgerMenu =()=>{
-      if(this.state.showHamburgerMenu == true){
-        return(
-          <TouchableOpacity onPress={this.onHamburgerClick} style={styles.elevation} >
-              <FaBars size ="1.5em"/>
-          </TouchableOpacity>
-        )
-      }
-      else{
-        return(null);
-      }
-    }
-    const ShowMobileNav = ()=>{
-      if(this.state.showMobileNav == true){
-        // Show Mobile Nav
-        return(
-          <View style={styles.mobile_nav}>
-            <Row>
-              <Col xs="8" style={{backgroundColor: '#ECECEC',}}>
-                <SideNavMobile/>
-              </Col>
-              <Col>
 
-              </Col>
-            </Row>
-          </View>
-        )
-      }
-      else{
-        return(null)
-      }
-    }
 
     return (
       <View>
-      
-      <ShowHamburgerMenu/>
-      <ShowMobileNav/> 
-      <View style={styles.header}>
-        <Text style={styles.headerText}>michael_vandi<mark style={{backgroundColor: 'black', color: 'white'}}>;</mark></Text>
-      </View>   
-      <Container fluid={false}>
-        <View>
-          <Row className="justify-content-md-center">
-            <Col md="3" style={{backgroundColor: '#ECECEC',}}>
-              <ShowSideNav />
-            </Col>
-           
-            <Col md="9">
-              <div id="home">
-                <HomeScreen/>
-              </div>
-              <div id="about">
-                <AboutMe/>
-              </div>
-              <div id="skills">
-                <Skills/>
-              </div>
-              <div id="projects">
-                <Projects imagesFromProject={this.projectCallback} projectDemo={this.demoCallBack}/>
-              </div>
-              <div id="resume">
-                <Resume/>
-              </div>
-              <div id="contact">
-                <ContactMe/>
-              </div>
-              
-              <div className="d-none d-md-block" style={{position: "fixed",
-                top: "10px",
-                //left: "50%",
-                //zIndex: 204,
-                transform: "translate(-50%, -50%, -50%, -50%)",
-                }}>
-          <ExpandedProject
-            image1={this.state.img_lg1} 
-            image2={this.state.img_lg2} 
-            image3={this.state.img_lg3}
-            show_modal={true}
-          />
-          </div>
-              
-            </Col>
-          </Row>
-        </View>
-      </Container>
+        {/* For background image and links */}
+        <View style={styles.header}>
+          <Text style={styles.headerText}>CIAT App</Text>
+        </View>   
+        <ImageBackground
+          style={{height: device_height * 0.5, width: '100%', marginTop: 40,}}
+          source={require('./img/cover.png')}
+        >
+        </ImageBackground>
+        <Container fluid={false}>
+
+        <View style={{marginVertical: 40}}>
+            <Row className="justify-content-md-center">
+              {/* For image 1 */}
+              <Col md="4" style={{paddingVertical: 10}}>
+                <TouchableOpacity style={styles.androidButton}>
+                <a href="https://firebasestorage.googleapis.com/v0/b/ciat-app.appspot.com/o/app-release.apk?alt=media&token=aea7424e-849f-41b3-9d80-95a441079f00"
+                style={{color:'#2D3047', fontSize: 20, fontWeight:'bold', textAlign: 'center'}}
+                target="_blank">
+                Download Android</a>
+              </TouchableOpacity>
+              </Col>
+            {/* For image 2 */}
+              <Col md="4" style={{paddingVertical: 10}}>
+                <TouchableOpacity style={styles.iosButton}>
+                  <a href="https://firebasestorage.googleapis.com/v0/b/ciat-app.appspot.com/o/app-release.apk?alt=media&token=aea7424e-849f-41b3-9d80-95a441079f00"
+                  style={{color:'#107E7D', fontSize: 20, fontWeight:'bold', textAlign: 'center'}}
+                  target="_blank">
+                  Download iOs</a>
+                </TouchableOpacity>
+              </Col>
+              {/* For image 3 */}
+              <Col md="4" style={{paddingVertical: 10}}>
+                <TouchableOpacity style={styles.sourceCodeButton}>
+                    <a href=""
+                    style={{color:'#79797C', fontSize: 20, fontWeight:'bold', textAlign: 'center'}}
+                    target="_blank">
+                    Source Code</a>
+                </TouchableOpacity>
+              </Col>
+            </Row>
+          </View>
+
+          <View style={{marginVertical: 40}}>
+            <Row className="justify-content-md-center">
+              {/* For image 1 */}
+              <Col md="4" style={{paddingVertical: 10}}>
+                <View style={styles.elevation}>
+                  <Text style={styles.titleText}>Active GIS Mapping</Text>
+                  {/*Image */}
+                  <Image
+                    style={styles.appImage}
+                    source={require('./img/map_screen.png')}
+                    resizeMode='contain'
+                  />
+                  <Text style={styles.descriptionText}>Our active GIS mapping gives you a holistic view of COVID-19 
+                  cases in every zip code in Maryland.</Text>
+                </View>
+
+              </Col>
+            {/* For image 2 */}
+              <Col md="4" style={{paddingVertical: 10}}>
+              {/* Photo by Ketut Subiyanto from Pexels */}
+                <View style={styles.elevation}>
+                  <Text style={styles.titleText}>Localized Statistics</Text>
+                  {/*Image */}
+                  <Image
+                    style={styles.appImage}
+                    source={require('./img/stats_screen.png')}
+                    resizeMode='contain'
+                  />
+                  <Text style={styles.descriptionText}>We generate statistics from verified sources
+                  specifically tailored to your zip code or city.</Text>
+                </View>
+                    
+              </Col>
+              {/* For image 3 */}
+              <Col md="4" style={{paddingVertical: 10}}>
+                <View style={styles.elevation}>
+                    <Text style={styles.titleText}>Links to Resources</Text>
+                    {/*Image */}
+                    <Image
+                      style={styles.appImage}
+                      source={require('./img/resources_screen.png')}
+                      resizeMode='contain'
+                    />
+                    <Text style={styles.descriptionText}>We also provide you with links to useful resources like where to
+                    get health supplies.</Text>
+                  </View>
+              </Col>
+            </Row>
+          </View>
+
+          <View style={{marginVertical: 40}}>
+            <Row className="justify-content-md-center">
+              {/* For image 1 */}
+              <Col md="6" style={{paddingVertical: 10}}>
+                <ImageBackground
+                  style={{height: device_height * 0.5, width: '100%'}}
+                  source={require('./img/beta_test.jpg')}
+                >
+                </ImageBackground>
+              </Col>
+            {/* For image 2 */}
+              <Col md="6" style={{paddingVertical: 10}}>
+                <View style={{ 
+                width: '100%', height: device_height * 0.5}}>
+                  <Text style={styles.titleText}>Join Our Beta</Text>
+                  <Text style={styles.descriptionText}>Send your email to one of the following email addresses to
+                    receive an invite </Text>
+
+                    <View style={{display: 'flex', flexDirection: 'row', paddingVertical: 10}}>
+                      <FaArrowRight size ="1.5em" color="#107E7D" style={{marginTop: 5, marginRight: 10}}/>
+                      <Text style={styles.listText}>Olubukola Akanbi: olubukola.akanbi@ubalt.edu</Text>
+                    </View>
+                    <View style={{display: 'flex', flexDirection: 'row', paddingVertical: 10}}>
+                      <FaArrowRight size ="1.5em" color="#107E7D" style={{marginTop: 5, marginRight: 10}}/>
+                      <Text style={styles.listText}>Charles Chase: charles.chase@ubalt.edu</Text>
+                    </View>
+                    <View style={{display: 'flex', flexDirection: 'row', paddingVertical: 10}}>
+                      <FaArrowRight size ="1.5em" color="#107E7D" style={{marginTop: 5, marginRight: 10}}/>
+                      <Text style={styles.listText}>Stephanie Parey: stephanie.parey@ubalt.edu</Text>
+                    </View>
+                    <View style={{display: 'flex', flexDirection: 'row', paddingVertical: 10}}>
+                      <FaArrowRight size ="1.5em" color="#107E7D" style={{marginTop: 5, marginRight: 10}}/>
+                      <Text style={styles.listText}>Michael Vandi: michael.vandi@ubalt.edu</Text>
+                    </View>
+                </View>
+              </Col>
+            </Row>
+          </View>
+        </Container>
       </View>
     );
   }
@@ -214,31 +186,12 @@ const styles =StyleSheet.create({
       },
       shadowRadius: 5,
       shadowOpacity: 0.7,
-      borderRadius: 5,
-      padding: 3,
-      margin: 3,
-      width: 30,
-      height: 30,
-      position: 'fixed',
-      marginTop: 5,
-      zIndex: 210,
-      backgroundColor: 'white'
+      borderRadius: 10,
+      padding: 10,
+      backgroundColor: 'white', 
+      marginBottom: 30,
     },
-    mobile_nav: {
-      padding: 5,
-      position: 'absolute',
-      zIndex: 8,
-    },
-    largeProject: {
-      position: "absolute",
-      margin: "auto",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      width: "100px",
-      height: "100px",
-    },
+
     header:{
       backgroundColor: 'white',
       //backgroundColor: '#00688B',
@@ -255,15 +208,56 @@ const styles =StyleSheet.create({
       zIndex: 205
     },
     headerText:{
-      fontFamily: 'Monospace',
       fontSize: header_text_size,
-      color: 'black',
+      fontWeight: 'bold',
+      color: '#107E7D',
       //color: 'white',
       width: '100%',
       height: '100%',
       textAlign: 'center',
       textAlignVertical: 'center',
       paddingTop: 4,
+    },
+    appImage: {
+      width: "90%",
+      height: device_height * 0.5,
+    },
+    titleText: {
+      fontWeight:'bold',
+      fontSize: 30,
+      color: "#2D3047",
+      width: '100%',
+      textAlign: 'center',
+    },
+    descriptionText: {
+      fontSize: 20,
+      height: 100
+    },
+    androidButton:{
+      borderColor: "#2D3047",
+      borderRadius: 10,
+      borderWidth: 2,
+      padding: 10,
+      marginBottom: 20,
+    },
+    iosButton:{
+      borderColor: "#107E7D",
+      borderRadius: 10,
+      borderWidth: 2,
+      padding: 10,
+      marginBottom: 20,
+    },
+    sourceCodeButton: {
+      borderColor: "#79797C",
+      borderRadius: 10,
+      borderWidth: 2,
+      padding: 10,
+      marginBottom: 20,
+    },
+    listText: {
+      fontWeight:'normal',
+      fontSize: 20,
+      color: "#2D3047",
     }
 
 })
